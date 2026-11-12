@@ -277,12 +277,17 @@ Phase 4 - Summary & Decision
 ```
 code-review-skill/
 |
-+-- SKILL.md                              # Core skill - loaded on activation (~220 lines)
++-- .claude-plugin/
+|   +-- marketplace.json                  # Marketplace manifest (for /plugin marketplace add)
+|   +-- plugin.json                       # Plugin manifest
 +-- README.md
 +-- LICENSE
 +-- CONTRIBUTING.md
 |
-+-- reference/                            # On-demand language guides
++-- skills/code-review-skill/             # The skill (reference/ and scripts/ live here)
+|   +-- SKILL.md                          # Core skill - loaded on activation (~220 lines)
+|
++-- reference/                            # On-demand language guides (under skills/code-review-skill/)
 |   +-- react.md                          # React 19 / Next.js / TanStack Query v5
 |   +-- vue.md                            # Vue 3.5 Composition API
 |   +-- angular.md                        # Angular 17+ / Signals / Zoneless
@@ -333,30 +338,19 @@ code-review-skill/
 
 ### &#128640; Installation
 
-**Install with `npx skills` (Cursor, Claude Code, Codex, OpenCode, and other agents):**
+**Install as a Claude Code plugin (this repo is a plugin marketplace):**
 
-```bash
-npx skills add awesome-skills/code-review-skill
+```
+/plugin marketplace add kamilfityka/code-review-skill
+/plugin install code-review-skill@code-review-skill
 ```
 
-The skills CLI finds `SKILL.md` at the repo root. Do not nest this skill under `skills/`.
-
-**Or clone into the Claude Code skills directory:**
+**Or clone and copy the skill into the Claude Code skills directory:**
 
 ```bash
 # macOS / Linux
-git clone https://github.com/awesome-skills/code-review-skill.git \
-  ~/.claude/skills/code-review-skill
-
-# Windows (PowerShell)
-git clone https://github.com/awesome-skills/code-review-skill.git `
-  "$env:USERPROFILE\.claude\skills\code-review-skill"
-```
-
-**Or add to an existing plugin:**
-
-```bash
-cp -r code-review-skill ~/.claude/plugins/your-plugin/skills/code-review/
+git clone https://github.com/kamilfityka/code-review-skill.git
+cp -r code-review-skill/skills/code-review-skill ~/.claude/skills/code-review-skill
 ```
 
 ---
